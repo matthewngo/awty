@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     class AlarmReceiver: BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val caption = "Texting " + formatPhone(intent!!.getStringExtra("Phone")) + "\n"
-            val message = formatPhone(intent!!.getStringExtra("Phone")) + ":" + intent!!.getStringExtra("Message")
+            val message = intent!!.getStringExtra("Message")
             Toast.makeText(context, caption + message, Toast.LENGTH_SHORT).show()
             println("PHONE: " + intent!!.getStringExtra("Phone"))
             SmsManager.getDefault().sendTextMessage(intent!!.getStringExtra("Phone"), null, message, null, null)
